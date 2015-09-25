@@ -1,0 +1,183 @@
+    {
+        "type": "FeatureCollection",
+        "features": [
+	{
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-17.016394,32.661758]
+            },
+            "properties": {
+		 "marker-size": "large",
+		"marker-color": "#d62d20",
+		"title": "Grupo Girao",
+		 "marker-symbol": "grocery"
+            }
+        },{
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-16.9199694,32.6453592]
+            },
+            "properties": {
+		 "marker-size": "large",
+		"marker-color": "ff6600",
+		"title": "terra MADEIRA",
+		 "marker-symbol": "grocery"
+            }
+        },{
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-16.9557677,32.6553175]
+            },
+            "properties": {
+		 "marker-size": "large",
+		"marker-color": "#008744",
+		"title": "Banana da Madeira",
+		 "marker-symbol": "grocery"
+            }
+        },
+{
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-16.73293948,32.73575775]
+            },
+            "properties": {
+		 "marker-size": "large",
+		"marker-color": "#0057e7",
+		"title": "Porto do Caniçal",
+		 "marker-symbol": "ferry"
+            }
+        },
+{
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-9.16854143,38.70182202]
+            },
+            "properties": {
+		 "marker-size": "large",
+		"marker-color": "#ffffff",
+		"title": "Porto do Lisboa",
+		 "marker-symbol": "ferry"
+            }
+        },
+{
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-25.6646204,37.73678374]
+            },
+            "properties": {
+		 "marker-size": "large",
+		"marker-color": "#ffffff",
+		"title": "Porto do Ponta Delgada",
+		 "marker-symbol": "ferry"
+            }
+        },
+{
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-16.72988713,32.74217416]
+            },
+            "properties": {
+		 "marker-size": "large",
+		"marker-color": "#f9d62e",
+		"title": "Companhia Logistica de Combustiveis da Madeira",
+		 "marker-symbol": "fuel"
+            }
+        },
+{
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-16.966683,32.649744]
+            },
+            "properties": {
+		 "marker-size": "large",
+		"marker-color": "#740001",
+		"title": "Empresa de Cervejas da Madeira LDS",
+		 "marker-symbol": "beer"
+            }
+        },
+{
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-8.8608907,37.9571555]
+            },
+            "properties": {
+		 "marker-size": "large",
+		"marker-color": "#ffffff",
+		"title": "Sines",
+		 "marker-symbol": "fuel"
+            }
+        },
+{
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-8.70524883,41.18117338]
+            },
+            "properties": {
+		 "marker-size": "large",
+		"marker-color": "#ffffff",
+		"title": "Porto do Leixões",
+		 "marker-symbol": "ferry"
+            }
+        },
+{
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-16.31283045,33.06057932]
+            },
+            "properties": {
+		 "marker-size": "large",
+		"marker-color": "#be29ec",
+		"title": "Porto do Porto Santo",
+		 "marker-symbol": "ferry"
+            }
+        },
+ {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [14.6627161,41.5602544]
+            },
+            "properties": {
+		"marker-size": "large",
+		"marker-color": "#ffffff",
+		"title": "La Molisana",
+		"marker-symbol": "grocery"
+            }
+        },{
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-73.552383,45.539987]
+            },
+            "properties": {
+		"marker-size": "large",
+		"marker-color": "#ffffff",
+		"title": "Bridor",
+		"marker-symbol": "grocery"
+            }
+        }
+,{
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [18.610017,-33.926893]
+            },
+            "properties": {
+		"marker-size": "large",
+		"marker-color": "#ffffff",
+		"title": "Greystone Trading",
+		"marker-symbol": "grocery"
+            }
+        }
+]}

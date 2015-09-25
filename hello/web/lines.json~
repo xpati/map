@@ -1,0 +1,30 @@
+[
+	{"startLat":14.6627161, "startLong":41.5602544,"endLat":-17.016394,"endLong":32.661758, "color":"#ffffff", "name":"Pasta"},
+	{"startLat":-73.552383, "startLong":45.539987,"endLat":-17.016394,"endLong":32.661758, "color":"#ffffff","name":"Bread & Cakes"},
+{"startLat":-16.9199694, "startLong":32.6453592,"endLat":-8.224454000000037,"endLong":39.39987199999999,"color":"#ffa500","name":"Portugal"},
+{"startLat":-16.9199694, "startLong":32.6453592,"endLat":-1.1743197000000691,"endLong":52.3555177, "color":"#ffa500","name":"Inglaterra"},
+{"startLat":-16.9199694, "startLong":32.6453592,"endLat":5.2912659999999505,"endLong":52.132633, "color":"#ffa500","name":"Holanda"},
+{"startLat":-16.9199694, "startLong":32.6453592,"endLat":4.4699359999999615,"endLong":50.503887, "color":"#ffa500","name":"Belgica"},
+{"startLat":-16.9199694, "startLong":32.6453592,"endLat":2.213749000000007,"endLong":46.227638, "color":"#ffa500","name":"França"},
+{"startLat":-16.9199694, "startLong":32.6453592,"endLat":18.643501000000015,"endLong":60.12816100000001, "color":"#ffa500","name":"Suécia"},
+{"startLat":-16.9199694, "startLong":32.6453592,"endLat":10.451526000000058,"endLong":51.165691, "color":"#ffa500","name":"Alemanha"},
+{"startLat":-16.9199694, "startLong":32.6453592,"endLat":12.567379999999957,"endLong":41.87194, "color":"#ffa500","name":"Italia"},
+{"startLat":-16.9199694, "startLong":32.6453592,"endLat":113.92132700000002,"endLong":-0.789275, "color":"#ffa500","name":"Indonesia"},
+{"startLat":-16.9199694, "startLong":32.6453592,"endLat":-95.71289100000001,"endLong":37.09024, "color":"#ffa500","name":"EUA"},
+
+{"startLat":-16.9557677, "startLong":32.6553175,"endLat":-8.224454000000037,"endLong":39.39987199999999, "color":"#008744","name":"Portugal"},
+{"startLat":-16.9557677, "startLong":32.6553175,"endLat":10.451526000000058,"endLong":51.165691, "color":"#008744","name":"Alemanha"},
+
+{"startLat":-16.73293948, "startLong":32.73575775,"endLat":-8.70524883,"endLong":41.18117338, "color":"#0057e7","name":"Leixoes"},
+{"startLat":-16.73293948, "startLong":32.73575775,"endLat":-9.16854143,"endLong":38.70182202, "color":"#0057e7","name":"Lisboa"},
+
+{"startLat":-25.6646204, "startLong":37.73678374,"endLat":-16.73293948,"endLong":32.73575775, "color":"#ffffff","name":"Gado & leite"},
+{"startLat":-16.73343301, "startLong":32.73678657,"endLat":-16.73293948,"endLong":32.73575775, "color":"#ffffff","name":"norte europa FALTA"},
+
+{"startLat":-8.8608907, "startLong":37.9571555,"endLat":-16.72988713,"endLong":32.74217416, "color":"#ffffff","name":"Gasolina, Gasólio, GPL, Fuelóleo,etc"},
+
+{"startLat":-16.966683, "startLong":32.649744,"endLat":18.610017,"endLong":-33.926893, "color":"#740001","name":"Coral"}
+
+]
+
+

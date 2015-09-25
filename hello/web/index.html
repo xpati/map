@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>A simple map</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+<script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+<script src='https://api.mapbox.com/mapbox.js/plugins/arc.js/v0.1.0/arc.js'></script>
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+
+<script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+<script src='https://code.jquery.com/jquery-migrate-1.2.1.min.js'></script>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/jquery-handsontable/0.10.2/jquery.handsontable.full.min.css' rel='stylesheet' />
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-handsontable/0.10.2/jquery.handsontable.full.min.js'></script>
+
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+
+.ui-table.handsontable {
+  background:#fff;
+  position:absolute;
+  top:10px;
+  right:10px;
+  z-index:100
+  }
+
+</style>
+
+</head>
+<body>
+<div id='map' class='ligth' >
+
+<div id='table' class='ui-table'></div>
+
+
+</div>
+</div>
+<script>
+
+/////////////// MAP
+L.mapbox.accessToken = 'pk.eyJ1IjoieHBhdGkiLCJhIjoiOTIyMDZlNzE3ZTI2ZDU1ZWQ0YWUxMjYwMTUwZjY4YjAifQ.c6UmIin-J6p_RfamPBRWrA';
+var map = L.mapbox.map('map', 'mapbox.dark',{//mapbox.streets. mapbox.light. mapbox.dark. mapbox.satellite.
+	minZoom:2,
+	zoomAnimation: false,
+    // Disable the animation of tiles fading in and out.
+   	 fadeAnimation: false,
+    // Disable the inertia that causes the map to keep moving
+    // when you drag it quickly.
+    	inertia: false,
+	maxZoom:15
+	})
+    .setView([32.760707, -16.959472], 12);//11
+
+//Agrupar
+L.mapbox.featureLayer().loadURL('/points.geojson').on('ready', function(e) {
+    // The clusterGroup gets each marker in the group added to it
+    // once loaded, and then is added to the map
+    var clusterGroup = new L.MarkerClusterGroup();
+    e.target.eachLayer(function(layer) {
+        clusterGroup.addLayer(layer);
+    });
+    map.addLayer(clusterGroup);
+});
+
+
+//////////////////////////////// tabela
+
+var data = [{
+    lon: 12.493515014648438,
+    lat: 41.89409955811395,
+    name: 'Rome',
+    color: '#ffffff'
+}, {
+    lon: 28.939361572265625,
+    lat: 41.01099329360268,
+    name: 'Istanbul',
+    color: '#ffffff'
+}];
+
+/*
+var data = L.mapbox.featureLayer()
+    .loadURL('/points.geojson')
+    .addTo(map);*/
+
+var dataLayer = L.mapbox.featureLayer().addTo(map);
+
+$("#table").handsontable({
+  data: data,
+  startRows: 7,
+  startCols: 4,
+  colHeaders: ['Lon', 'Lat', 'Name', 'Color'],
+  columnSorting: true,
+  columns: [
+    {
+      data: 'lon',
+      type: 'numeric'
+    },
+    {
+      data: 'lat',
+      type: 'numeric'
+    },
+    {
+      data: 'name'
+    },
+    {
+      data: 'color'
+    }
+  ],
+  minSpareRows: 1,
+  // Everytime the table is changed, update the markers on the map.
+  afterChange: dataToMarkers
+});
+
+
+function dataToMarkers() {
+  // Create a new geojson object that'll represent the table values.
+  var geojson = { type: 'FeatureCollection', features: [] };
+  // For each table row, create a marker.
+  for (var i = 0; i < data.length; i++) {
+    // Blank rows shouldn't be included - they're easy to detect and skip.
+    if (data[i].lon === null || data[i].lat === null) continue;
+    geojson.features.push({
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [ data[i].lon, data[i].lat]
+      },
+      properties: {
+        'marker-color': data[i].color,
+        'title': data[i].name
+      }
+    });
+  }
+  dataLayer.setGeoJSON(geojson);
+}
+
+
+////////////////////////////////////// 	line
+
+d3.json("lines.json", function(data) {
+
+
+var svgContainer = d3.select("body").append("svg")
+                                     .attr("width", 200)
+                                     .attr("height", 200);
+
+var text = svgContainer.selectAll("text")
+                       .data(data)
+                        .enter()
+                        .append("text");
+
+//Add SVG Text Element Attributes
+var textLabels = text
+                 .text( function (d) { return loadLine(d.startLat,d.startLong,d.endLat,d.endLong,d.color,d.name); });
+})
+
+function loadLine(startX,startY,endX,endY,color, name){
+
+	var start = {x:startX, y:startY};
+	var end = {x:endX, y:endY};	
+	var generator = new arc.GreatCircle(start, end);
+	var line = generator.Arc(1000);
+
+	L.geoJson(line.json(),{
+			 color: color,
+			weight: 1,
+			opacity: 5
+			})
+			.bindPopup(name)
+			.addTo(map);
+}
+
+
+
+
+
+</script>
+
+
+<script>
+////////////////// javascript
+
+         var wsuri;
+         if (document.location.origin === "null" || document.location.origin === "file://") {
+            wsuri = "ws://127.0.0.1:8080/ws";
+
+         } else {
+            wsuri = (document.location.protocol === "http:" ? "ws:" : "wss:") + "//" +
+                        document.location.host + "/ws";
+         }
+
+         // the WAMP connection to the Router
+         //
+         var connection = new autobahn.Connection({
+            url: wsuri,
+            realm: "realm1"
+         });
+
+
+         // timers
+         //
+         var t1, t2;
+
+
+         // fired when connection is established and session attached
+         //
+         connection.onopen = function (session, details) {
+
+            console.log("Connected");
+
+            // SUBSCRIBE to a topic and receive events
+            //
+            function on_counter (args) {
+               var counter = args[0];
+         //      console.log("on_counter() event received with counter " + counter);
+            }
+            session.subscribe('com.example.oncounter', on_counter).then(
+               function (sub) {
+                  console.log('subscribed to topic');
+               },
+               function (err) {
+                  console.log('failed to subscribe to topic', err);
+               }
+            );
+
+
+            // PUBLISH an event every second
+            //
+            t1 = setInterval(function () {
+
+               session.publish('com.example.onhello', ['Hello from JavaScript (browser)']);
+               console.log("published to topic 'com.example.onhello'");
+            }, 1000);
+
+
+            // REGISTER a procedure for remote calling
+            //
+            function mul2 (args) {
+               var x = args[0];
+               var y = args[1];
+               console.log("mul2() called with " + x + " and " + y);
+               return x * y;
+            }
+            session.register('com.example.mul2', mul2).then(
+               function (reg) {
+                  console.log('procedure registered');
+               },
+               function (err) {
+                  console.log('failed to register procedure', err);
+               }
+            );
+
+
+            // CALL a remote procedure every second
+            //
+            var x = 0;
+
+            t2 = setInterval(function () {
+
+               session.call('com.example.add2', [x, 18]).then(
+                  function (res) {
+                     console.log("add2() result:", res);
+                  },
+                  function (err) {
+                     console.log("add2() error:", err);
+                  }
+               );
+
+               x += 3;
+            }, 1000);
+         };
+
+
+         // fired when connection was lost (or could not be established)
+         //
+         connection.onclose = function (reason, details) {
+            console.log("Connection lost: " + reason);
+            if (t1) {
+               clearInterval(t1);
+               t1 = null;
+            }
+            if (t2) {
+               clearInterval(t2);
+               t2 = null;
+            }
+         }
+
+
+         // now actually open the connection
+         //
+         connection.open();
+
+      </script>
+   </body>
+</html>
